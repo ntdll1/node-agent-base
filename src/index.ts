@@ -253,7 +253,12 @@ namespace createAgent {
 			};
 
 			const onsocket = (socket: AgentCallbackReturn) => {
-				if (timedOut) return;
+				if (timedOut) {
+					if (socket) {
+						socket.destroy();
+					}
+					return;
+				}
 				if (timeoutId != null) {
 					clearTimeout(timeoutId);
 					timeoutId = null;
