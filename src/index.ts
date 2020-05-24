@@ -255,7 +255,7 @@ namespace createAgent {
 			const onsocket = (socket: AgentCallbackReturn) => {
 				if (timedOut) {
 					if (socket) {
-						socket.destroy();
+						(socket as net.Socket).destroy();
 					}
 					return;
 				}
